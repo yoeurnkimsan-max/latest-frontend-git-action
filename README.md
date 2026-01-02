@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TaskFlow - Task Management Application
 
-## Getting Started
+## Team Members
+- Phorn Rothana
+- yeourn kimsan
+- So Bunleng
+- chory Chanrady
 
-First, run the development server:
+## Tech Stack
+- **Framework:** Next.js 16+ (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 
+- **UI Components:** shadcn/ui
+- **Data Fetching:** tanstack
+- **Backend:** JSON Server (mock API)
+- **Date Handling:** date-fns
+
+## Features
+
+### Pages
+1. **Dashboard** (`/`) - Overview with statistics and recent tasks
+2. **Tasks List** (`/tasks`) - Filterable task view with status filters
+3. **Task Detail** (`/tasks/[id]`) - Detailed task view with subtasks and comments
+4. **Create Task** (`/tasks/new`) - Form to create new tasks
+5. **Projects List** (`/projects`) - Grid view of all projects with progress
+6. **Project Detail** (`/projects/[id]`) - Project overview with task list
+
+
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This will:
+- Start Next.js dev server on `http://localhost:3000`
+- Start JSON Server on `http://localhost:3001`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## API Endpoints
 
-## Learn More
+- `GET /projects` - Get all projects
+- `GET /projects/:id` - Get specific project
+- `GET /tasks` - Get all tasks
+- `GET /tasks/:id` - Get specific task
+- `GET /tasks?projectId=:id` - Get tasks by project
 
-To learn more about Next.js, take a look at the following resources:
+## Database
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The application uses JSON Server with `db.json` as the mock database. It contains:
+- 3 projects (Marketing Campaign, Product Launch, Engineering)
+- 8 tasks across different projects
+- Sample comments and subtasks
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
