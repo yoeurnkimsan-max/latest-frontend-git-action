@@ -1,6 +1,5 @@
-name: Frontend CI
+name: Frontend CI/CD
 
-# Trigger CI on push or pull request to main branch
 on:
   push:
     branches:
@@ -10,32 +9,29 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repo
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # Step 3: Install pnpm globally
       - name: Install pnpm
         run: npm install -g pnpm
 
-      # Step 4: Install dependencies
       - name: Install dependencies
         run: pnpm install
 
-      # Step 5: Build frontend
       - name: Build frontend
         run: pnpm run build
 
-      # Step 6: Lint code
       - name: Lint code
         run: pnpm run lint
+
+      - name: Deploy to Vercel
+        run: npx vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --confirm
