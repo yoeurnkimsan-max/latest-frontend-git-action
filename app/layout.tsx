@@ -64,7 +64,7 @@ export default function RootLayout({
                     className="w-full justify-start gap-2"
                   >
                     <FolderOpen className="w-4 h-4" />
-                    Projects
+                    Project
                   </Button>
                 </Link>
               </nav>
