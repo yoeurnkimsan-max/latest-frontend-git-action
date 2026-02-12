@@ -14,19 +14,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the repo
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      # Step 2: Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
+      # Step 3: Install pnpm globally
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      # Step 4: Install dependencies
       - name: Install dependencies
-        run: pnpm install # run at root
+        run: pnpm install
 
+      # Step 5: Build frontend
       - name: Build frontend
-        run: npm run build # run at root
+        run: pnpm run build
 
+      # Step 6: Lint code
       - name: Lint code
-        run: pnpm run lint # run at root
+        run: pnpm run lint
