@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Spinner } from "@/components/ui/spinner";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { useTasks } from "@/hooks/use-queries";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { formatDistanceToNow } from "date-fns";
-import { AlertCircle } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Spinner } from '@/components/ui/spinner';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { useTasks } from '@/hooks/use-queries';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { formatDistanceToNow } from 'date-fns';
+import { AlertCircle } from 'lucide-react';
 
 export default function DashboardPage() {
   const { data: tasks, isLoading, error } = useTasks();
@@ -32,12 +32,12 @@ export default function DashboardPage() {
   }
 
   const totalTasks = tasks.length;
-  const completedTasks = tasks.filter((task) => task.status === "done").length;
+  const completedTasks = tasks.filter((task) => task.status === 'done').length;
   const inProgressTasks = tasks.filter(
-    (task) => task.status === "in-progress"
+    (task) => task.status === 'in-progress'
   ).length;
   const overdueTasks = tasks.filter(
-    (task) => new Date(task.dueDate) < new Date() && task.status !== "done"
+    (task) => new Date(task.dueDate) < new Date() && task.status !== 'done'
   ).length;
 
   const recentTasks = tasks
@@ -142,18 +142,18 @@ export default function DashboardPage() {
                       </h3>
                       <span
                         className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium ${
-                          task.status === "done"
-                            ? "bg-emerald-100 text-emerald-700"
-                            : task.status === "in-progress"
-                            ? "bg-orange-100 text-orange-700"
-                            : "bg-gray-100 text-gray-700"
+                          task.status === 'done'
+                            ? 'bg-emerald-100 text-emerald-700'
+                            : task.status === 'in-progress'
+                              ? 'bg-orange-100 text-orange-700'
+                              : 'bg-gray-100 text-gray-700'
                         }`}
                       >
-                        {task.status === "in-progress"
-                          ? "In Progress"
-                          : task.status === "done"
-                          ? "Done"
-                          : "To Do"}
+                        {task.status === 'in-progress'
+                          ? 'In Progress'
+                          : task.status === 'done'
+                            ? 'Done'
+                            : 'To Do'}
                       </span>
                     </div>
                     <p className="text-sm text-muted-foreground">

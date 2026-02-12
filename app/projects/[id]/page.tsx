@@ -1,11 +1,11 @@
-import { getProject, getTasksByProject } from "@/lib/api";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
-import { AlertCircle, ArrowLeft, Settings } from "lucide-react";
-import Link from "next/link";
-import { Progress } from "@/components/ui/progress";
-import { Alert, AlertDescription } from "@/components/ui/alert";
+import { getProject, getTasksByProject } from '@/lib/api';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
+import { AlertCircle, ArrowLeft, Settings } from 'lucide-react';
+import Link from 'next/link';
+import { Progress } from '@/components/ui/progress';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const projectTeamMembers: {
   [key: string]: Array<{
@@ -15,85 +15,84 @@ const projectTeamMembers: {
     color: string;
   }>;
 } = {
-  "1": [
+  '1': [
     {
-      initials: "JD",
-      name: "Phorn Rothana",
-      role: "Lead Fullstack Developer",
-      color: "bg-purple-500",
+      initials: 'JD',
+      name: 'Phorn Rothana',
+      role: 'Lead Fullstack Developer',
+      color: 'bg-purple-500',
     },
     {
-      initials: "AK",
-      name: "yeourn kimsan",
-      role: "Fullstack Developer",
-      color: "bg-blue-500",
+      initials: 'AK',
+      name: 'yeourn kimsan',
+      role: 'Fullstack Developer',
+      color: 'bg-blue-500',
     },
     {
-      initials: "SL",
-      name: "So Bunleng",
-      role: "Fullstack Developer",
-      color: "bg-green-500",
+      initials: 'SL',
+      name: 'So Bunleng',
+      role: 'Fullstack Developer',
+      color: 'bg-green-500',
     },
-     {
-      initials: "TK",
-      name: "chory Chanrady",
-      role: "Fullstack Developer",
-      color: "bg-green-500",
+    {
+      initials: 'TK',
+      name: 'chory Chanrady',
+      role: 'Fullstack Developer',
+      color: 'bg-green-500',
     },
   ],
-  "2": [
-   {
-      initials: "JD",
-      name: "Phorn Rothana",
-      role: "Lead Fullstack Developer",
-      color: "bg-purple-500",
+  '2': [
+    {
+      initials: 'JD',
+      name: 'Phorn Rothana',
+      role: 'Lead Fullstack Developer',
+      color: 'bg-purple-500',
     },
     {
-      initials: "AK",
-      name: "yeourn kimsan",
-      role: "Fullstack Developer",
-      color: "bg-blue-500",
+      initials: 'AK',
+      name: 'yeourn kimsan',
+      role: 'Fullstack Developer',
+      color: 'bg-blue-500',
     },
     {
-      initials: "SL",
-      name: "So Bunleng",
-      role: "Fullstack Developer",
-      color: "bg-green-500",
+      initials: 'SL',
+      name: 'So Bunleng',
+      role: 'Fullstack Developer',
+      color: 'bg-green-500',
     },
-     {
-      initials: "TK",
-      name: "chory Chanrady",
-      role: "Fullstack Developer",
-      color: "bg-green-500",
+    {
+      initials: 'TK',
+      name: 'chory Chanrady',
+      role: 'Fullstack Developer',
+      color: 'bg-green-500',
     },
   ],
-  "3": [
-   {
-      initials: "JD",
-      name: "Phorn Rothana",
-      role: "Lead Fullstack Developer",
-      color: "bg-purple-500",
+  '3': [
+    {
+      initials: 'JD',
+      name: 'Phorn Rothana',
+      role: 'Lead Fullstack Developer',
+      color: 'bg-purple-500',
     },
     {
-      initials: "AK",
-      name: "yeourn kimsan",
-      role: "Fullstack Developer",
-      color: "bg-blue-500",
+      initials: 'AK',
+      name: 'yeourn kimsan',
+      role: 'Fullstack Developer',
+      color: 'bg-blue-500',
     },
     {
-      initials: "SL",
-      name: "So Bunleng",
-      role: "Fullstack Developer",
-      color: "bg-green-500",
+      initials: 'SL',
+      name: 'So Bunleng',
+      role: 'Fullstack Developer',
+      color: 'bg-green-500',
     },
-     {
-      initials: "TK",
-      name: "chory Chanrady",
-      role: "Fullstack Developer",
-      color: "bg-green-500",
+    {
+      initials: 'TK',
+      name: 'chory Chanrady',
+      role: 'Fullstack Developer',
+      color: 'bg-green-500',
     },
   ],
- 
 };
 
 export default async function ProjectDetailPage({
@@ -119,8 +118,8 @@ export default async function ProjectDetailPage({
   const stats = {
     total: project.tasksTotal,
     completed: project.tasksCompleted,
-    inProgress: tasks.filter((t) => t.status === "in-progress").length,
-    todo: tasks.filter((t) => t.status === "todo").length,
+    inProgress: tasks.filter((t) => t.status === 'in-progress').length,
+    todo: tasks.filter((t) => t.status === 'todo').length,
   };
 
   const progressPercent = (project.tasksCompleted / project.tasksTotal) * 100;
@@ -214,13 +213,13 @@ export default async function ProjectDetailPage({
                   {tasks.map((task) => (
                     <Link key={task.id} href={`/tasks/${task.id}`}>
                       <div className="flex items-start gap-3 p-3 rounded border border-border hover:bg-muted/50 cursor-pointer transition">
-                        <Checkbox checked={task.status === "done"} />
+                        <Checkbox checked={task.status === 'done'} />
                         <div className="flex-1">
                           <p
                             className={`font-medium ${
-                              task.status === "done"
-                                ? "line-through text-muted-foreground"
-                                : "text-foreground"
+                              task.status === 'done'
+                                ? 'line-through text-muted-foreground'
+                                : 'text-foreground'
                             }`}
                           >
                             {task.title}
@@ -231,18 +230,18 @@ export default async function ProjectDetailPage({
                         </div>
                         <span
                           className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium whitespace-nowrap ${
-                            task.status === "done"
-                              ? "bg-emerald-100 text-emerald-700"
-                              : task.status === "in-progress"
-                              ? "bg-orange-100 text-orange-700"
-                              : "bg-gray-100 text-gray-700"
+                            task.status === 'done'
+                              ? 'bg-emerald-100 text-emerald-700'
+                              : task.status === 'in-progress'
+                                ? 'bg-orange-100 text-orange-700'
+                                : 'bg-gray-100 text-gray-700'
                           }`}
                         >
-                          {task.status === "in-progress"
-                            ? "In Progress"
-                            : task.status === "done"
-                            ? "Done"
-                            : "To Do"}
+                          {task.status === 'in-progress'
+                            ? 'In Progress'
+                            : task.status === 'done'
+                              ? 'Done'
+                              : 'To Do'}
                         </span>
                       </div>
                     </Link>
@@ -306,10 +305,10 @@ export default async function ProjectDetailPage({
               </CardHeader>
               <CardContent>
                 <p className="text-foreground">
-                  {new Date(project.dueDate).toLocaleDateString("en-US", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
+                  {new Date(project.dueDate).toLocaleDateString('en-US', {
+                    month: 'long',
+                    day: 'numeric',
+                    year: 'numeric',
                   })}
                 </p>
               </CardContent>

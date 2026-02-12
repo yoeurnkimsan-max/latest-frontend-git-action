@@ -1,12 +1,18 @@
-"use client"
+'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 
 export default function CreateTaskPage() {
   return (
@@ -20,7 +26,9 @@ export default function CreateTaskPage() {
 
       <div className="max-w-2xl">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground">Create New Task</h1>
+          <h1 className="text-3xl font-bold text-foreground">
+            Create New Task
+          </h1>
         </div>
 
         <Card>
@@ -32,7 +40,11 @@ export default function CreateTaskPage() {
               <Label htmlFor="title" className="text-base font-medium">
                 Task Title
               </Label>
-              <Input id="title" placeholder="Enter task title" className="mt-2" />
+              <Input
+                id="title"
+                placeholder="Enter task title"
+                className="mt-2"
+              />
             </div>
 
             <div>
@@ -96,5 +108,5 @@ export default function CreateTaskPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Spinner } from "@/components/ui/spinner";
-import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
-import { useTasks } from "@/hooks/use-queries";
-import Link from "next/link";
-import { Checkbox } from "@/components/ui/checkbox";
-import { AlertCircle, MessageSquare, Flag, Plus } from "lucide-react";
-import { formatDistanceToNow } from "date-fns";
+import { useState } from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Spinner } from '@/components/ui/spinner';
+import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Button } from '@/components/ui/button';
+import { useTasks } from '@/hooks/use-queries';
+import Link from 'next/link';
+import { Checkbox } from '@/components/ui/checkbox';
+import { AlertCircle, MessageSquare, Flag, Plus } from 'lucide-react';
+import { formatDistanceToNow } from 'date-fns';
 
-type FilterStatus = "all" | "todo" | "in-progress" | "done";
+type FilterStatus = 'all' | 'todo' | 'in-progress' | 'done';
 
 export default function TasksPage() {
   const { data: tasks, isLoading, error } = useTasks();
-  const [filter, setFilter] = useState<FilterStatus>("all");
+  const [filter, setFilter] = useState<FilterStatus>('all');
 
   if (isLoading) {
     return (
@@ -37,15 +37,15 @@ export default function TasksPage() {
   }
 
   const filtered = tasks.filter((task) => {
-    if (filter === "all") return true;
+    if (filter === 'all') return true;
     return task.status === filter;
   });
 
   const stats = {
     all: tasks.length,
-    todo: tasks.filter((t) => t.status === "todo").length,
-    "in-progress": tasks.filter((t) => t.status === "in-progress").length,
-    done: tasks.filter((t) => t.status === "done").length,
+    todo: tasks.filter((t) => t.status === 'todo').length,
+    'in-progress': tasks.filter((t) => t.status === 'in-progress').length,
+    done: tasks.filter((t) => t.status === 'done').length,
   };
 
   return (
@@ -66,14 +66,14 @@ export default function TasksPage() {
       <Card className="mb-6">
         <CardContent className="pt-6">
           <div className="flex flex-wrap gap-2">
-            {(["all", "todo", "in-progress", "done"] as const).map((status) => (
+            {(['all', 'todo', 'in-progress', 'done'] as const).map((status) => (
               <Button
                 key={status}
-                variant={filter === status ? "default" : "outline"}
+                variant={filter === status ? 'default' : 'outline'}
                 onClick={() => setFilter(status)}
               >
-                {status === "in-progress"
-                  ? "In Progress"
+                {status === 'in-progress'
+                  ? 'In Progress'
                   : status.charAt(0).toUpperCase() + status.slice(1)}
               </Button>
             ))}
@@ -102,18 +102,18 @@ export default function TasksPage() {
                         </h3>
                         <span
                           className={`inline-flex items-center px-2 py-1 rounded text-xs font-medium whitespace-nowrap ${
-                            task.status === "done"
-                              ? "bg-emerald-100 text-emerald-700"
-                              : task.status === "in-progress"
-                              ? "bg-orange-100 text-orange-700"
-                              : "bg-gray-100 text-gray-700"
+                            task.status === 'done'
+                              ? 'bg-emerald-100 text-emerald-700'
+                              : task.status === 'in-progress'
+                                ? 'bg-orange-100 text-orange-700'
+                                : 'bg-gray-100 text-gray-700'
                           }`}
                         >
-                          {task.status === "in-progress"
-                            ? "In Progress"
-                            : task.status === "done"
-                            ? "Done"
-                            : "To Do"}
+                          {task.status === 'in-progress'
+                            ? 'In Progress'
+                            : task.status === 'done'
+                              ? 'Done'
+                              : 'To Do'}
                         </span>
                       </div>
                       <p className="text-sm text-muted-foreground mb-3">
@@ -121,11 +121,11 @@ export default function TasksPage() {
                       </p>
                       <div className="flex items-center gap-4 flex-wrap text-xs text-muted-foreground">
                         <span className="px-2 py-1 bg-muted rounded">
-                          {task.projectId === "1"
-                            ? "Marketing"
-                            : task.projectId === "2"
-                            ? "Product Launch"
-                            : "Engineering"}
+                          {task.projectId === '1'
+                            ? 'Marketing'
+                            : task.projectId === '2'
+                              ? 'Product Launch'
+                              : 'Engineering'}
                         </span>
                         <div className="flex items-center gap-1">
                           <MessageSquare className="w-4 h-4" />
@@ -134,13 +134,13 @@ export default function TasksPage() {
                         <div className="flex items-center gap-1">
                           <Flag
                             className={
-                              task.priority === "high"
-                                ? "text-red-500 w-4 h-4"
-                                : "w-4 h-4"
+                              task.priority === 'high'
+                                ? 'text-red-500 w-4 h-4'
+                                : 'w-4 h-4'
                             }
                           />
                           {task.priority.charAt(0).toUpperCase() +
-                            task.priority.slice(1)}{" "}
+                            task.priority.slice(1)}{' '}
                           Priority
                         </div>
                         <span>

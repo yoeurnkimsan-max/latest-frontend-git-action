@@ -1,19 +1,19 @@
-import type React from "react";
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { LayoutDashboard, CheckSquare, FolderOpen, Plus } from "lucide-react";
-import { Providers } from "@/app/providers";
-import "./globals.css";
+import type React from 'react';
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { LayoutDashboard, CheckSquare, FolderOpen, Plus } from 'lucide-react';
+import { Providers } from '@/app/providers';
+import './globals.css';
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const _geist = Geist({ subsets: ['latin'] });
+const _geistMono = Geist_Mono({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: "TaskFlow",
-  description: "Task management application",
+  title: 'TaskFlow',
+  description: 'Task management application',
 };
 
 export default function RootLayout({
